@@ -1,0 +1,177 @@
+{
+  "use_case": "Use-Case 3: Curriculum Evaluation & Alumni Career Outcome Prediction",
+  "institution": "Vocational Training Center (Anonymized Case Study)",
+  "data_source_layer": "Anonymized Snapshot from Silver Layer (dim_peserta, fact_kehadiran_kelulusan, fact_tracer_alumni, dim_modul_reguler)",
+  "is_sklearn_pipeline": true,
+  "pipeline_steps": [
+    "SimpleImputer(strategy=\"median\")",
+    "DecisionTreeClassifier"
+  ],
+  "library_versions": {
+    "python": "3.11.13",
+    "scikit-learn": "1.7.2",
+    "pandas": "2.3.3",
+    "numpy": "2.3.4",
+    "joblib": "1.5.2"
+  },
+  "total_valid_alumni": 315,
+  "distribusi_status": {
+    "Bekerja": 148,
+    "Buka Usaha": 95,
+    "Belum Bekerja": 72
+  },
+  "target_mapping": {
+    "Bekerja": 0,
+    "Buka Usaha": 1,
+    "Belum Bekerja": 2
+  },
+  "target_label_descriptions": {
+    "0": "Bekerja (Terserap di industri/usaha konveksi/garmen)",
+    "1": "Buka Usaha (Wirausaha mandiri / tailor / butik)",
+    "2": "Belum Bekerja (Perlu pendampingan/remedial kompetensi)"
+  },
+  "features_skema_a": [
+    "nilai_ukur_pola",
+    "nilai_jahit_dasar",
+    "nilai_jahit_lanjut",
+    "nilai_finishing"
+  ],
+  "features_skema_b": [
+    "nilai_ukur_pola",
+    "nilai_jahit_dasar",
+    "nilai_jahit_lanjut",
+    "nilai_finishing",
+    "skor_uji_kompetensi"
+  ],
+  "imputer_train_medians": {
+    "nilai_ukur_pola": 80.55,
+    "nilai_jahit_dasar": 84.2,
+    "nilai_jahit_lanjut": 82.75,
+    "nilai_finishing": 83.3,
+    "skor_uji_kompetensi": 84.65
+  },
+  "korelasi_signifikansi": [
+    {
+      "Modul": "Ukur Pola",
+      "r_Terserap (All)": 0.684,
+      "p_r_Terserap": 5.95e-41,
+      "rho_Terserap (All)": 0.672,
+      "r_WaktuTunggu (Emp)": 0.021,
+      "p_r_WaktuTunggu (Emp)": 0.755,
+      "rho_WaktuTunggu (Emp)": 0.038,
+      "p_rho_WaktuTunggu (Emp)": 0.573
+    },
+    {
+      "Modul": "Jahit Dasar",
+      "r_Terserap (All)": 0.754,
+      "p_r_Terserap": 6.32e-54,
+      "rho_Terserap (All)": 0.689,
+      "r_WaktuTunggu (Emp)": -0.394,
+      "p_r_WaktuTunggu (Emp)": 1.38e-09,
+      "rho_WaktuTunggu (Emp)": -0.411,
+      "p_rho_WaktuTunggu (Emp)": 2.28e-10
+    },
+    {
+      "Modul": "Jahit Lanjut",
+      "r_Terserap (All)": 0.781,
+      "p_r_Terserap": 3.02e-60,
+      "rho_Terserap (All)": 0.716,
+      "r_WaktuTunggu (Emp)": 0.02,
+      "p_r_WaktuTunggu (Emp)": 0.767,
+      "rho_WaktuTunggu (Emp)": 0.064,
+      "p_rho_WaktuTunggu (Emp)": 0.345
+    },
+    {
+      "Modul": "Finishing",
+      "r_Terserap (All)": 0.814,
+      "p_r_Terserap": 2.99e-69,
+      "rho_Terserap (All)": 0.718,
+      "r_WaktuTunggu (Emp)": -0.452,
+      "p_r_WaktuTunggu (Emp)": 1.7e-12,
+      "rho_WaktuTunggu (Emp)": -0.464,
+      "p_rho_WaktuTunggu (Emp)": 3.89e-13
+    },
+    {
+      "Modul": "Skor Uji Komp.",
+      "r_Terserap (All)": 0.913,
+      "p_r_Terserap": 3.95e-113,
+      "rho_Terserap (All)": 0.733,
+      "r_WaktuTunggu (Emp)": -0.46,
+      "p_r_WaktuTunggu (Emp)": 6.52e-13,
+      "rho_WaktuTunggu (Emp)": -0.412,
+      "p_rho_WaktuTunggu (Emp)": 2.09e-10
+    }
+  ],
+  "evaluasi_skema_A_4modul": {
+    "best_hyperparameters": {
+      "criterion": "gini",
+      "max_depth": 5,
+      "min_samples_leaf": 3,
+      "min_samples_split": 4
+    },
+    "cv_5fold_macro_f1": 0.8951,
+    "accuracy": 0.9365,
+    "precision_macro": 0.9405,
+    "recall_macro": 0.9491,
+    "f1_score_macro": 0.9437,
+    "f1_score_weighted": 0.937,
+    "feature_importance": {
+      "4. Finishing": 0.5256,
+      "1. Ukur Pola": 0.406,
+      "2. Jahit Dasar": 0.0343,
+      "3. Jahit Lanjut": 0.0341
+    }
+  },
+  "evaluasi_skema_B_komprehensif": {
+    "best_hyperparameters": {
+      "criterion": "entropy",
+      "max_depth": 5,
+      "min_samples_leaf": 3,
+      "min_samples_split": 10
+    },
+    "cv_5fold_macro_f1": 0.9286,
+    "accuracy": 0.9048,
+    "precision_macro": 0.9127,
+    "recall_macro": 0.9205,
+    "f1_score_macro": 0.9155,
+    "f1_score_weighted": 0.9055,
+    "feature_importance": {
+      "Skor Uji Kompetensi": 0.5515,
+      "Ukur Pola": 0.2476,
+      "Finishing": 0.1469,
+      "Jahit Lanjut": 0.054,
+      "Jahit Dasar": 0.0
+    }
+  },
+  "sample_test_input_and_prediction": {
+    "input": {
+      "nilai_ukur_pola": 87.5,
+      "nilai_jahit_dasar": 82.0,
+      "nilai_jahit_lanjut": null,
+      "nilai_finishing": 81.5,
+      "skor_uji_kompetensi": 85.0
+    },
+    "skema_a_prediction": {
+      "predicted_code": 1,
+      "predicted_label": "Buka Usaha",
+      "probabilities": {
+        "Bekerja": 0.0,
+        "Buka Usaha": 1.0,
+        "Belum Bekerja": 0.0
+      }
+    },
+    "skema_b_prediction": {
+      "predicted_code": 1,
+      "predicted_label": "Buka Usaha",
+      "probabilities": {
+        "Bekerja": 0.0,
+        "Buka Usaha": 1.0,
+        "Belum Bekerja": 0.0
+      }
+    }
+  },
+  "artifacts": [
+    "models/curriculum_dt_skema_a.pkl",
+    "models/curriculum_dt_skema_b.pkl"
+  ]
+}

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vocational Operations Analytics — DS / ML / DA / BI Project</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">VA</div>
+        <div>
+          <div class="brand-title">Vocational Analytics</div>
+          <div class="brand-sub">DS · ML · DA · BI System</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="nav-section-label">Navigasi Analitik</div>
+        <nav class="nav-list" id="mainNav">
+          <button class="nav-btn active" data-view="overview">
+            <span class="nav-dot"></span>
+            <span>Ringkasan Eksekutif</span>
+            <span class="nav-badge">BI</span>
+          </button>
+          <button class="nav-btn" data-view="maintenance">
+            <span class="nav-dot"></span>
+            <span>Predictive Maintenance</span>
+            <span class="nav-badge">P1</span>
+          </button>
+          <button class="nav-btn" data-view="dropout">
+            <span class="nav-dot"></span>
+            <span>Early Warning Drop-Out</span>
+            <span class="nav-badge">P2</span>
+          </button>
+          <button class="nav-btn" data-view="curriculum">
+            <span class="nav-dot"></span>
+            <span>Kurikulum &amp; Tracer Study</span>
+            <span class="nav-badge">P3</span>
+          </button>
+          <button class="nav-btn" data-view="modellab">
+            <span class="nav-dot"></span>
+            <span>Model Lab &amp; Arsitektur</span>
+            <span class="nav-badge">DS</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <strong>100% Lokal &amp; Teranonimisasi</strong>
+        Seluruh data dan 7 pipeline ML berjalan langsung di browser tanpa server eksternal, tanpa PII, dan tanpa kredensial live API.
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <h1 class="page-title" id="topbarTitle">Ringkasan Eksekutif Operasional</h1>
+          <p class="page-subtitle" id="topbarSubtitle">
+            Studi Kasus Teranonimisasi Lembaga Pelatihan Vokasi — Integrasi Business Intelligence &amp; 7 Pipeline Machine Learning
+          </p>
+        </div>
+        <div class="pill-group">
+          <span class="pill cyan">7 Pipeline ML Aktif</span>
+          <span class="pill emerald">PII-Free Snapshot</span>
+          <span class="pill indigo">GitHub Pages Ready</span>
+        </div>
+      </header>
+
+      <!-- ================================================================
+           VIEW 1: EXECUTIVE OVERVIEW (BI LAYER)
+           ================================================================ -->
+      <section class="view-panel active" id="view-overview">
+        <div class="kpi-grid" id="execKpiGrid"></div>
+
+        <div class="grid-3">
+          <div class="card pillar-card">
+            <span class="pillar-tag">Pilar 1 · Asset Operations</span>
+            <h3 class="card-title">Predictive Maintenance &amp; IoT Proxy</h3>
+            <p>
+              Rekonstruksi beban pemakaian mesin tanpa sensor fisik (<code style="color:#38bdf8">akumulasi_jp</code>) untuk mengubah perawatan reaktif menjadi servis preventif 3 tingkat.
+            </p>
+            <div class="pillar-stat-row">
+              <span>Model Utama: Random Forest 3-Kelas</span>
+              <strong>F1 0.520</strong>
+            </div>
+            <button class="link-btn" data-jump="maintenance">Buka Analisis &amp; Simulator →</button>
+          </div>
+
+          <div class="card pillar-card">
+            <span class="pillar-tag">Pilar 2 · Student Retention</span>
+            <h3 class="card-title">Dual-Stage Drop-Out EWS</h3>
+            <p>
+              Deteksi risiko berhenti sejak hari ke-1 pendaftaran (Logistic Regression, <code style="color:#38bdf8">thr=0.25</code>) hingga pemantauan presensi aktif (Gradient Boosting).
+            </p>
+            <div class="pillar-stat-row">
+              <span>Stage 2 Ongoing ROC-AUC</span>
+              <strong>0.953</strong>
+            </div>
+            <button class="link-btn" data-jump="dropout">Buka Analisis &amp; Simulator →</button>
+          </div>
+
+          <div class="card pillar-card">
+            <span class="pillar-tag">Pilar 3 · Alumni Outcome</span>
+            <h3 class="card-title">Evaluasi Kurikulum &amp; Tracer Study</h3>
+            <p>
+              Pemetaan empiris pengaruh 4 modul praktik &amp; uji kompetensi terhadap status karir alumni (<strong>Bekerja</strong>, <strong>Buka Usaha</strong>, atau <strong>Belum Bekerja</strong>).
+            </p>
+            <div class="pillar-stat-row">
+              <span>Decision Tree Skema A Accuracy</span>
+              <strong>93.65%</strong>
+            </div>
+            <button class="link-btn" data-jump="curriculum">Buka Analisis &amp; Simulator →</button>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Tren Log Kondisi Mesin Tahunan (2018–2025)</h3>
+                <p class="card-desc">Distribusi catatan kondisi Normal, Waspada, dan Bahaya lintas tahun</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartExecMaintTrend"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Distribusi Serapan Karir Alumni (n = 315)</h3>
+                <p class="card-desc">Total tingkat serapan (Bekerja + Wirausaha) mencapai 77,14%</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartExecAlumniDonut"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Matriks Rekomendasi Strategis Lintas Pilar (Prescriptive BI)</h3>
+              <p class="card-desc">Rangkuman temuan data langsung diterjemahkan menjadi aksi manajerial</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Pilar Operasional</th>
+                  <th>Temuan Diagnostik Utama</th>
+                  <th>Model Pendukung</th>
+                  <th>Rekomendasi Aksi Prioritas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Predictive Maintenance</strong></td>
+                  <td>47,7% log servis berstatus rusak (ringan/berat); tipe <code style="color:#38bdf8">HIGH_SPEED</code> &amp; <code style="color:#38bdf8">PORTABLE</code> mendominasi 65,1% histori.</td>
+                  <td class="mono">RF 3-Class &amp; Regressor</td>
+                  <td>Terapkan jadwal servis preventif sebelum kelas 200 JP &amp; sediakan stok rutin jarum, spul, oli, dan v-belt.</td>
+                </tr>
+                <tr>
+                  <td><strong>Drop-Out EWS</strong></td>
+                  <td>Gap kehadiran sangat tajam: <strong>95,74%</strong> (Selesai) vs <strong>57,67%</strong> (Drop-Out); program REGULER &amp; PKW paling rentan (~6,7%).</td>
+                  <td class="mono">LogReg + GradBoost</td>
+                  <td>Tetapkan presensi &lt;75% sebagai alarm konseling wajib &amp; sediakan jadwal praktik fleksibel bagi peserta yang bekerja.</td>
+                </tr>
+                <tr>
+                  <td><strong>Evaluasi Kurikulum</strong></td>
+                  <td>Modul <strong>Finishing</strong> (<code style="color:#10b981">r=0.814</code>) &amp; <strong>Ukur Pola</strong> (<code style="color:#10b981">r=0.684</code>) menyumbang 93,2% kepentingan model; waktu tunggu turun hingga 4,54 bulan.</td>
+                  <td class="mono">Decision Tree A &amp; B</td>
+                  <td>Wajibkan remedial <em>Finishing &amp; Ukur Pola</em> sebelum ujian; terapkan <em>dual-track coaching</em> (Industri vs Wirausaha).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 2: PILLAR 1 — PREDICTIVE MAINTENANCE
+           ================================================================ -->
+      <section class="view-panel" id="view-maintenance">
+        <div class="filter-bar">
+          <label for="maintTypeFilter">Filter Tipe Mesin:</label>
+          <select id="maintTypeFilter"></select>
+          <span id="maintFilterMeta" style="font-size:12px;color:var(--text-secondary);margin-left:auto;"></span>
+        </div>
+
+        <div class="grid-sim">
+          <!-- Simulator Input -->
+          <div class="card sim-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Simulator Live: Prediksi Kondisi &amp; Beban Mesin</h3>
+                <p class="card-desc">Menjalankan 3 pipeline lokal (RF 3-Kelas, RF 4-Kelas, &amp; RF Regressor) secara real-time</p>
+              </div>
+            </div>
+
+            <div class="preset-row">
+              <button class="preset-btn" data-mpreset="normal">Preset: Mesin Sehat</button>
+              <button class="preset-btn" data-mpreset="waspada">Preset: Waspada (Ref)</button>
+              <button class="preset-btn" data-mpreset="bahaya">Preset: Beban Kritis</button>
+            </div>
+
+            <div class="form-grid">
+              <div class="field full">
+                <label>Tipe Mesin</label>
+                <select id="simMaintType"></select>
+              </div>
+              <div class="field full">
+                <label>Usia Pakai Mesin (Hari) <span class="val" id="valMaintUsia">500 hari</span></label>
+                <input type="range" id="simMaintUsia" min="30" max="2600" step="10" value="500" />
+              </div>
+              <div class="field full">
+                <label>Akumulasi Beban Kerja (JP — IoT Proxy) <span class="val" id="valMaintJp">2200 JP</span></label>
+                <input type="range" id="simMaintJp" min="100" max="8500" step="50" value="2200" />
+              </div>
+              <div class="field full">
+                <label>Riwayat Servis Ke- <span class="val" id="valMaintServis">1 kali</span></label>
+                <input type="range" id="simMaintServis" min="1" max="8" step="1" value="1" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulator Output -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Hasil Inferensi &amp; Rekomendasi Teknisi</h3>
+                <p class="card-desc">Output identik dengan model Python <code style="color:#38bdf8">maintenance_*.pkl</code></p>
+              </div>
+            </div>
+            <div id="maintSimOutput"></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Analisis IoT Proxy: Usia Mesin vs Akumulasi JP</h3>
+                <p class="card-desc">Arahkan kursor ke titik untuk melihat detail aset (<code style="color:#38bdf8">AST-xxx</code>)</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartMaintScatter"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Distribusi Log Servis per Tipe Mesin</h3>
+                <p class="card-desc">Total frekuensi servis historis di 8 kategori mesin</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartMaintByType"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Top 8 Tindakan Perbaikan Historis</h3>
+              <p class="card-desc">Pola intervensi teknisi yang paling sering terjadi di lapangan</p>
+            </div>
+          </div>
+          <div class="chart-box" id="chartMaintActions"></div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 3: PILLAR 2 — EARLY WARNING SYSTEM DROP-OUT
+           ================================================================ -->
+      <section class="view-panel" id="view-dropout">
+        <div class="grid-sim">
+          <!-- Simulator Input -->
+          <div class="card sim-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Simulator Live: Dual-Stage Drop-Out EWS</h3>
+                <p class="card-desc">Bandingkan skrining Hari-1 (LogReg, thr 0.25) vs Monitoring Berjalan (GradBoost, thr 0.50)</p>
+              </div>
+            </div>
+
+            <div class="preset-row">
+              <button class="preset-btn" data-dpreset="aman">Preset: Profil Aman (PKK)</button>
+              <button class="preset-btn" data-dpreset="ref">Preset: Risiko Tinggi (Ref)</button>
+              <button class="preset-btn" data-dpreset="waspada">Preset: Hari-1 Waspada, Hadir Baik</button>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label>Program Pelatihan</label>
+                <select id="simDoProgram">
+                  <option value="REGULER">REGULER (150 JP)</option>
+                  <option value="PKK">PKK (200 JP)</option>
+                  <option value="PKW">PKW (200 JP)</option>
+                  <option value="HARIAN">HARIAN (51 JP)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Zona Geografis (Anonim)</label>
+                <select id="simDoZone">
+                  <option value="Zone A">Zone A</option>
+                  <option value="Zone B">Zone B</option>
+                  <option value="Zone C">Zone C</option>
+                  <option value="Zone D">Zone D</option>
+                  <option value="Zone E">Zone E</option>
+                  <option value="Zone F">Zone F</option>
+                  <option value="Other Zones">Other Zones</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Pendidikan Terakhir</label>
+                <select id="simDoEdu">
+                  <option value="SD/Sederajat">SD/Sederajat</option>
+                  <option value="SMP/Sederajat">SMP/Sederajat</option>
+                  <option value="SMA/SMK/Sederajat" selected>SMA/SMK/Sederajat</option>
+                  <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Jenis Kelamin</label>
+                <select id="simDoGender">
+                  <option value="P" selected>Perempuan (P)</option>
+                  <option value="L">Laki-laki (L)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Usia Masuk <span class="val" id="valDoUsia">26 th</span></label>
+                <input type="range" id="simDoUsia" min="16" max="55" step="1" value="26" />
+              </div>
+              <div class="field">
+                <label>Bulan Mulai <span class="val" id="valDoBulan">Bulan 3</span></label>
+                <input type="range" id="simDoBulan" min="1" max="12" step="1" value="3" />
+              </div>
+              <div class="field full">
+                <label>Jarak Tempat Tinggal <span class="val" id="valDoJarak">7.0 km</span></label>
+                <input type="range" id="simDoJarak" min="0.5" max="45" step="0.5" value="7" />
+              </div>
+              <div class="field full">
+                <label>Persentase Kehadiran Berjalan (Khusus Stage 2) <span class="val" id="valDoAtt">62%</span></label>
+                <input type="range" id="simDoAtt" min="10" max="100" step="1" value="62" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulator Output -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Skor Risiko Dual-Stage &amp; Rekomendasi Intervensi</h3>
+                <p class="card-desc">Garis kuning pada gauge menunjukkan <em>decision threshold</em> terkalibrasi OOF</p>
+              </div>
+            </div>
+            <div class="gauge-grid">
+              <div class="gauge-card" id="gaugeDoStage1"></div>
+              <div class="gauge-card" id="gaugeDoStage2"></div>
+            </div>
+            <div id="doSimOutput"></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Distribusi Kehadiran: Selesai vs Drop-Out</h3>
+                <p class="card-desc">Rata-rata kehadiran Selesai <strong>95,74%</strong> vs Drop-Out <strong>57,67%</strong> (gap 38,07 pp)</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartDoAttendance"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Tingkat Drop-Out per Program (%)</h3>
+                <p class="card-desc">Program REGULER (6,74%) dan PKW (6,67%) memiliki risiko tertinggi</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartDoProgram"></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Pareto Alasan Keluar (Data Kualitatif, n = 14)</h3>
+                <p class="card-desc">Faktor kesibukan/pekerjaan mendominasi 42,8% kasus drop-out</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartDoReasons"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Sebaran Peserta per Zona Geografis (Anonim)</h3>
+                <p class="card-desc">Konsentrasi pendaftar tertinggi pada Zone A &amp; Zone B</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartDoZone"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 4: PILLAR 3 — EVALUASI KURIKULUM & TRACER STUDY
+           ================================================================ -->
+      <section class="view-panel" id="view-curriculum">
+        <div class="grid-sim">
+          <!-- Simulator Input -->
+          <div class="card sim-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Simulator Live: Prediksi Jalur Karir Alumni</h3>
+                <p class="card-desc">Decision Tree Skema A (4 Modul) &amp; Skema B (Komprehensif + Uji Kompetensi)</p>
+              </div>
+            </div>
+
+            <div class="preset-row">
+              <button class="preset-btn" data-cpreset="industri">Preset: Jalur Industri</button>
+              <button class="preset-btn" data-cpreset="wirausaha">Preset: Wirausaha (Ref + NaN)</button>
+              <button class="preset-btn" data-cpreset="remedial">Preset: Butuh Remedial</button>
+            </div>
+
+            <div class="form-grid">
+              <div class="field full">
+                <label>1. Nilai Ukur Pola <span class="val" id="valCurrPola">87.5</span></label>
+                <input type="range" id="simCurrPola" min="50" max="100" step="0.5" value="87.5" />
+              </div>
+              <div class="field full">
+                <label>2. Nilai Jahit Dasar <span class="val" id="valCurrDasar">82.0</span></label>
+                <input type="range" id="simCurrDasar" min="50" max="100" step="0.5" value="82.0" />
+              </div>
+              <div class="field full">
+                <label>3. Nilai Jahit Lanjut <span class="val" id="valCurrLanjut">Missing (Imputer)</span></label>
+                <input type="range" id="simCurrLanjut" min="50" max="100" step="0.5" value="85.0" disabled />
+                <label class="checkbox-row" style="font-weight:500;">
+                  <input type="checkbox" id="simCurrLanjutNull" checked />
+                  Simulasikan nilai kosong (<code>NaN</code>) untuk menguji <code>SimpleImputer</code> internal pipeline
+                </label>
+              </div>
+              <div class="field full">
+                <label>4. Nilai Finishing / QC <span class="val" id="valCurrFinish">81.5</span></label>
+                <input type="range" id="simCurrFinish" min="50" max="100" step="0.5" value="81.5" />
+              </div>
+              <div class="field full">
+                <label>5. Skor Uji Kompetensi (Skema B) <span class="val" id="valCurrUji">85.0</span></label>
+                <input type="range" id="simCurrUji" min="50" max="100" step="0.5" value="85.0" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulator Output -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Prediksi Jalur Karir &amp; Strategi Pembinaan</h3>
+                <p class="card-desc">Perbandingan serentak Skema A (Pra-Ujian) vs Skema B (Pasca-Ujian)</p>
+              </div>
+            </div>
+            <div id="currSimOutput"></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Profil Rata-Rata Nilai Modul per Jalur Karir</h3>
+                <p class="card-desc">Industri unggul di Jahit Dasar &amp; Finishing; Wirausaha unggul di Ukur Pola &amp; Jahit Lanjut</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartCurrProfile"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Korelasi Pearson (r): Serapan Karir vs Waktu Tunggu</h3>
+                <p class="card-desc">Positif = menaikkan peluang terserap; Negatif = mempercepat waktu tunggu kerja</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartCurrCorr"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Skor Uji Kompetensi vs Waktu Tunggu Kerja (n = 315 Alumni)</h3>
+              <p class="card-desc">Alumni dengan skor &gt;82 jauh lebih cepat terserap (rata-rata 4,5–5,5 bulan vs 18,15 bulan)</p>
+            </div>
+          </div>
+          <div class="chart-box" id="chartCurrScatter"></div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 5: MODEL LAB & ARCHITECTURE (DS / RECRUITER VIEW)
+           ================================================================ -->
+      <section class="view-panel" id="view-modellab">
+        <div class="card" style="margin-bottom:20px;">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Komparasi Evaluasi 7 Pipeline Machine Learning</h3>
+              <p class="card-desc">Seluruh artefak dibungkus <code style="color:#38bdf8">sklearn.pipeline.Pipeline</code> dan telah diverifikasi paritas Python vs JavaScript</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Pilar</th>
+                  <th>Model / Artefak</th>
+                  <th>Algoritma</th>
+                  <th>Metrik Evaluasi Utama</th>
+                  <th>Peran Operasional</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pilar 1</td>
+                  <td class="mono">maintenance_classifier_3class.pkl</td>
+                  <td>Tuned Random Forest</td>
+                  <td class="mono">Macro-F1 0.520 (Base 0.559)</td>
+                  <td>Klasifikasi prioritas servis 3-tingkat</td>
+                </tr>
+                <tr>
+                  <td>Pilar 1</td>
+                  <td class="mono">maintenance_classifier_4class.pkl</td>
+                  <td>Random Forest (4-Class)</td>
+                  <td class="mono">Acc 38.9% | Macro-F1 0.307</td>
+                  <td>Benchmark dampak <em>sparse class</em></td>
+                </tr>
+                <tr>
+                  <td>Pilar 1</td>
+                  <td class="mono">maintenance_regressor.pkl</td>
+                  <td>Random Forest Regressor</td>
+                  <td class="mono">MAE 1714.8 JP (CV 1756.9)</td>
+                  <td>Estimasi beban akumulasi JP mesin</td>
+                </tr>
+                <tr>
+                  <td>Pilar 2</td>
+                  <td class="mono">dropout_stage1_pre.pkl</td>
+                  <td>Logistic Regression (thr=0.25)</td>
+                  <td class="mono">Recall 66.7% | AUC 0.741</td>
+                  <td>Skrining risiko awal hari ke-1</td>
+                </tr>
+                <tr>
+                  <td>Pilar 2</td>
+                  <td class="mono">dropout_stage2_ongoing.pkl</td>
+                  <td>Gradient Boosting (thr=0.50)</td>
+                  <td class="mono">Prec 100% | F1 0.800 | AUC 0.953</td>
+                  <td>Alert presisi berbasis presensi berjalan</td>
+                </tr>
+                <tr>
+                  <td>Pilar 3</td>
+                  <td class="mono">curriculum_dt_skema_a.pkl</td>
+                  <td>Decision Tree (4 Modul)</td>
+                  <td class="mono">Acc 93.65% | Macro-F1 0.944</td>
+                  <td>Deteksi remedial pra-uji kompetensi</td>
+                </tr>
+                <tr>
+                  <td>Pilar 3</td>
+                  <td class="mono">curriculum_dt_skema_b.pkl</td>
+                  <td>Decision Tree (4 Modul + Uji)</td>
+                  <td class="mono">CV F1 0.929 | Acc 90.48%</td>
+                  <td>Pemetaan jalur karir &amp; inkubasi usaha</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Feature Importance: Maintenance</h3>
+                <p class="card-desc">Top fitur RF 3-Kelas</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartFiMaint"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Feature Importance: Drop-Out S2</h3>
+                <p class="card-desc">Top fitur Gradient Boosting</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartFiDrop"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Feature Importance: Kurikulum A</h3>
+                <p class="card-desc">Bobot penentu Decision Tree</p>
+              </div>
+            </div>
+            <div class="chart-box" id="chartFiCurr"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3 class="card-title">Arsitektur Sistem, Batas Peran Tim, &amp; Protokol Privasi</h3>
+              <p class="card-desc">Transparansi ruang lingkup kolaborasi lintas peran untuk evaluasi profesional</p>
+            </div>
+          </div>
+          <div class="arch-grid">
+            <div class="arch-box">
+              <span class="pillar-tag" style="background:rgba(148,163,184,0.16);color:#cbd5e1;">Upstream · Tim Data Engineering</span>
+              <h4 style="margin:8px 0 4px;font-size:14px;">Infrastruktur Data &amp; ETL (Out-of-Scope)</h4>
+              <ul>
+                <li>Formulir operasional admin (CRUD pendaftaran, presensi, log servis).</li>
+                <li>Validasi NIK, normalisasi ID baku, dan sinkronisasi <em>Silver Layer</em>.</li>
+                <li>Laporan administratif dinas &amp; pemeliharaan warehouse operasional.</li>
+              </ul>
+            </div>
+
+            <div class="arch-arrow">→</div>
+
+            <div class="arch-box owned">
+              <span class="pillar-tag">In-Scope · DS / ML / DA / BI Team</span>
+              <h4 style="margin:8px 0 4px;font-size:14px;">Analitik, Pemodelan 3 Pilar, &amp; Serving Lokal</h4>
+              <ul>
+                <li><strong>DA / BI:</strong> KPI eksekutif, analisis gap kehadiran, Pareto alasan keluar, uji korelasi Pearson/Spearman.</li>
+                <li><strong>DS / ML:</strong> <em>IoT Proxy Feature Engineering</em>, penanganan <em>class imbalance</em> (4,01%), kalibrasi threshold OOF, &amp; 7 pipeline <code>scikit-learn</code>.</li>
+                <li><strong>Privasi &amp; Reproducibility:</strong> 100% dataset lokal teranonimisasi (nol PII, nol nama instansi/daerah, nol API live), 3 notebook lokal, dan dashboard statis <code>github.io</code>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 100% Local Data + ML Bundle (Zero External API / Zero CORS Issues) -->
+  <script src="data/dashboard_bundle.js"></script>
+  <script src="assets/ml_engine.js"></script>
+  <script src="assets/charts.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

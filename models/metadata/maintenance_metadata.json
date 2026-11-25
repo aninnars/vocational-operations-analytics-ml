@@ -1,0 +1,157 @@
+{
+  "use_case": "Use-Case 1: Predictive Maintenance & Machine Workload Estimation",
+  "institution": "Vocational Training Center (Anonymized Case Study)",
+  "date_updated": "2026-11-20",
+  "data_source_layer": "Anonymized Snapshot from Silver Layer (fact_log_mesin, fact_kehadiran_kelulusan, fact_jadwal_pembelajaran)",
+  "is_sklearn_pipeline": true,
+  "pipeline_steps": [
+    "SimpleImputer(strategy='median')",
+    "RandomForestClassifier / RandomForestRegressor"
+  ],
+  "library_versions": {
+    "python": "3.11.13",
+    "scikit-learn": "1.7.2",
+    "pandas": "2.3.3",
+    "numpy": "2.3.4",
+    "joblib": "1.5.2"
+  },
+  "total_clean_samples": 86,
+  "unique_assets": 46,
+  "target_distribution_3class": {
+    "Baik (Normal)": 45,
+    "Rusak Ringan (Waspada)": 29,
+    "Rusak Berat / Afkir (Bahaya)": 12
+  },
+  "target_distribution_4class": {
+    "Baik": 45,
+    "Rusak Ringan": 29,
+    "Rusak Berat": 11,
+    "Rusak Total": 1
+  },
+  "target_labels_3class": {
+    "0": "Baik (Normal - Hijau)",
+    "1": "Rusak Ringan (Waspada - Kuning)",
+    "2": "Rusak Berat / Afkir (Bahaya - Merah)"
+  },
+  "target_labels_4class": {
+    "0": "Baik",
+    "1": "Rusak Ringan",
+    "2": "Rusak Berat",
+    "3": "Rusak Total"
+  },
+  "target_regression": "akumulasi_jp (Estimasi beban jam pelajaran operasional mesin)",
+  "features_classification": [
+    "usia_mesin_hari",
+    "akumulasi_jp",
+    "riwayat_servis_ke",
+    "rasio_beban_harian",
+    "jp_per_servis",
+    "tipe_BUTTERFLY_MANUAL",
+    "tipe_HIGH_SPEED",
+    "tipe_MESIN_JAHIT_LAINNYA",
+    "tipe_NECI",
+    "tipe_OBRAS",
+    "tipe_OVERDECK",
+    "tipe_PORTABLE",
+    "tipe_SINGER"
+  ],
+  "features_regression": [
+    "usia_mesin_hari",
+    "riwayat_servis_ke",
+    "tipe_BUTTERFLY_MANUAL",
+    "tipe_HIGH_SPEED",
+    "tipe_MESIN_JAHIT_LAINNYA",
+    "tipe_NECI",
+    "tipe_OBRAS",
+    "tipe_OVERDECK",
+    "tipe_PORTABLE",
+    "tipe_SINGER"
+  ],
+  "regression_evaluation": {
+    "target": "akumulasi_jp",
+    "linear_regression": {
+      "mae": 1889.35,
+      "rmse": 2135.27,
+      "r2": -0.3014
+    },
+    "random_forest": {
+      "mae": 1714.8,
+      "rmse": 2212.72,
+      "r2": -0.3975,
+      "5fold_cv_mae": 1756.9
+    }
+  },
+  "classification_stage1_baseline": {
+    "3class_baseline_accuracy": 0.7222,
+    "3class_baseline_macro_f1": 0.5585,
+    "3class_baseline_weighted_f1": 0.6988,
+    "cv_5fold_macro_f1_mean": 0.2826,
+    "cv_5fold_macro_f1_std": 0.0705,
+    "4class_honest_accuracy": 0.3889,
+    "4class_honest_macro_f1": 0.3072
+  },
+  "classification_stage2_optimized": {
+    "cost_sensitive_rf_accuracy": 0.5556,
+    "cost_sensitive_rf_macro_f1": 0.3652,
+    "gradient_boosting_accuracy": 0.6111,
+    "gradient_boosting_macro_f1": 0.4497,
+    "gridsearch_tuned_rf_accuracy": 0.5556,
+    "gridsearch_tuned_rf_macro_f1": 0.5199,
+    "gridsearch_tuned_rf_weighted_f1": 0.5513,
+    "best_hyperparameters": {
+      "class_weight": "balanced_subsample",
+      "max_depth": 3,
+      "min_samples_leaf": 2,
+      "min_samples_split": 2,
+      "n_estimators": 50
+    }
+  },
+  "sample_test_input_and_prediction": {
+    "input_classification": {
+      "usia_mesin_hari": 500.0,
+      "akumulasi_jp": 2200.0,
+      "riwayat_servis_ke": 1.0,
+      "rasio_beban_harian": 4.3912,
+      "jp_per_servis": 2200.0,
+      "tipe_BUTTERFLY_MANUAL": 0.0,
+      "tipe_HIGH_SPEED": 1.0,
+      "tipe_MESIN_JAHIT_LAINNYA": 0.0,
+      "tipe_NECI": 0.0,
+      "tipe_OBRAS": 0.0,
+      "tipe_OVERDECK": 0.0,
+      "tipe_PORTABLE": 0.0,
+      "tipe_SINGER": 0.0
+    },
+    "prediction_3class": {
+      "predicted_code": 1,
+      "predicted_label": "Rusak Ringan (Waspada)",
+      "probabilities": {
+        "Baik": 0.4351,
+        "Rusak Ringan": 0.4557,
+        "Rusak Berat / Afkir": 0.1092
+      }
+    },
+    "prediction_4class": {
+      "predicted_code": 1,
+      "predicted_label": "Rusak Ringan"
+    },
+    "input_regression": {
+      "usia_mesin_hari": 500,
+      "riwayat_servis_ke": 1,
+      "tipe_BUTTERFLY_MANUAL": 0,
+      "tipe_HIGH_SPEED": 1,
+      "tipe_MESIN_JAHIT_LAINNYA": 0,
+      "tipe_NECI": 0,
+      "tipe_OBRAS": 0,
+      "tipe_OVERDECK": 0,
+      "tipe_PORTABLE": 0,
+      "tipe_SINGER": 0
+    },
+    "prediction_regression_akumulasi_jp": 3817.41
+  },
+  "artifacts": [
+    "models/maintenance_classifier_3class.pkl",
+    "models/maintenance_classifier_4class.pkl",
+    "models/maintenance_regressor.pkl"
+  ]
+}

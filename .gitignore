@@ -1,0 +1,29 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Secrets & local config
+.env
+.env.*
+secrets.toml
+.streamlit/secrets.toml
+
+# Raw / private operational data (never commit)
+*.db
+*.sqlite
+*.xlsx
+*raw*
+*silver_cloud_cache*
+*PANDUAN*
+*koneksi_data_serving*
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
